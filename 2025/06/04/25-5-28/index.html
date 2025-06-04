@@ -17,20 +17,20 @@
   
     <meta name="keywords" content="Git" />
   
-  <meta name="description" content="在我们日常使用Git中总是会出现一些比较常见的错误，本文章就列举一下我见过的一些错误以及有解决方法我会在下面写出来 Force Push 强制推送Git版本控制系统中的一个重要操作——强制推送（Force Push）。通常情况下，我们在推送修改到远程仓库时使用git push命令，但有时候我们可能遇到需要强制推送的情况。如果有多名开发人员在合作开发一个分支，并且之前开发人员已经完成更改，把代码pu">
+  <meta name="description" content="这篇笔记的目的是用来记录自己使用Git的过程中遇到的问题.在我们日常使用Git中总是会出现一些比较常见的错误，本文章就列举一下我见过的一些错误以及有解决方法我会在下面写出来 Force Push 强制推送Git版本控制系统中的一个重要操作——强制推送（Force Push）。通常情况下，我们在推送修改到远程仓库时使用git push命令，但有时候我们可能遇到需要强制推送的情况。如果有多名开发人员在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git | 分享一下常见的错误">
 <meta property="og:url" content="https://www.schoar.cloud/2025/06/04/25-5-28/index.html">
 <meta property="og:site_name" content="Schoar:Z1an">
-<meta property="og:description" content="在我们日常使用Git中总是会出现一些比较常见的错误，本文章就列举一下我见过的一些错误以及有解决方法我会在下面写出来 Force Push 强制推送Git版本控制系统中的一个重要操作——强制推送（Force Push）。通常情况下，我们在推送修改到远程仓库时使用git push命令，但有时候我们可能遇到需要强制推送的情况。如果有多名开发人员在合作开发一个分支，并且之前开发人员已经完成更改，把代码pu">
+<meta property="og:description" content="这篇笔记的目的是用来记录自己使用Git的过程中遇到的问题.在我们日常使用Git中总是会出现一些比较常见的错误，本文章就列举一下我见过的一些错误以及有解决方法我会在下面写出来 Force Push 强制推送Git版本控制系统中的一个重要操作——强制推送（Force Push）。通常情况下，我们在推送修改到远程仓库时使用git push命令，但有时候我们可能遇到需要强制推送的情况。如果有多名开发人员在">
 <meta property="og:locale">
-<meta property="og:image" content="https://www.schoar.cloud/images/LawYum.ico">
+<meta property="og:image" content="https://www.schoar.cloud/2025/06/04/25-5-28/git.jpg">
 <meta property="article:published_time" content="2025-06-04T01:17:40.000Z">
-<meta property="article:modified_time" content="2025-06-04T02:42:48.413Z">
+<meta property="article:modified_time" content="2025-06-04T03:02:04.029Z">
 <meta property="article:author" content="Schoar">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.schoar.cloud/images/LawYum.ico">
+<meta name="twitter:image" content="https://www.schoar.cloud/2025/06/04/25-5-28/git.jpg">
   
   <!-- 站点验证相关 -->
   
@@ -297,7 +297,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            776
+                            ~1.21K
                         
                         字
                     </li>
@@ -309,19 +309,23 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1749004968413"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1749006124029"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>在我们日常使用Git中总是会出现一些比较常见的错误，本文章就列举一下我见过的一些错误以及有解决方法我会在下面写出来</p>
+            <div itemprop="articleBody"><p>这篇笔记的目的是用来记录自己使用Git的过程中遇到的问题.<br>在我们日常使用Git中总是会出现一些比较常见的错误，本文章就列举一下我见过的一些错误以及有解决方法我会在下面写出来</p>
 <h2 id="Force-Push-强制推送"><a href="#Force-Push-强制推送" class="headerlink" title="Force Push 强制推送"></a>Force Push 强制推送</h2><p>Git版本控制系统中的一个重要操作——强制推送（Force Push）。通常情况下，我们在推送修改到远程仓库时使用git push命令，但有时候我们可能遇到需要强制推送的情况。<br>如果有多名开发人员在合作开发一个分支，并且之前开发人员已经完成更改，把代码push到了远程仓库。<br>另一名开发人员准备push提交到远程仓库的时候会发现自己无法推送到远程仓库<br>若开发人员使用了:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -f</span><br></pre></td></tr></table></figure>
 <p>这样做会直接将本地修改覆盖到远程仓库的对应提交，并且会覆盖远程仓库上的历史记录<br>那么就很可能出现一个问题，就是前一名开发人员提交的代码会全部消失，如果想避免这个问题，一种理想方法是他先把第一位开发人员的更新从远程仓库pull到本地，再把代码rebase重新整理提交历史一下，再进行push。<br>除非有绝对的必要<span class="blur">无法提交</span>，最好还是不要用它。它会把本地分支的提交覆盖远程推送分支的提交，给协作的同伴带去不少麻烦，即便是上面的解决方案，它也会存在一个时间差，你不可能时刻掌握同伴的工作进展。<br>若是报错”repository ‘<a target="_blank" rel="noopener" href="https://github.com/xxx/xxx.git/">https://github.com/xxx/xxx.git/</a>‘ not found”<br>这种可能是权限验证错误引起的，可以尝试卸载Git凭证管理器后重装即可解决。</p>
 <h2 id="git-push-被拒绝"><a href="#git-push-被拒绝" class="headerlink" title="git push 被拒绝"></a>git push 被拒绝</h2><p>错误提示如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git@gitlab.com: Permission denied (publickey).</span><br><span class="line">$ fatal: Could not <span class="built_in">read</span> from remote repository.</span><br></pre></td></tr></table></figure>
-<p>一般遇到这个错误有两个原因:<br>ssh-config配置异常 或者是 远程仓库不存在，可以排除解决问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git@github.com: Permission denied (publickey).</span><br><span class="line">$ fatal: Could not <span class="built_in">read</span> from remote repository.</span><br></pre></td></tr></table></figure>
+<p>一般遇到这个错误有两个原因:<br>ssh-config配置异常 或者是 远程仓库不存在，可以排除解决问题<br>已经有id_rsa和id_rsa.pub文件的前提下，请检查~&#x2F;.ssh&#x2F;config 文件下的配置。<br>并保证id_rsa文件中的密钥已经上传到githu代码托管服务平台</p>
+<h2 id="关于Git上传github网站错误"><a href="#关于Git上传github网站错误" class="headerlink" title="关于Git上传github网站错误"></a>关于Git上传github网站错误</h2><p>hexo deploy出现错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ Please make sure you have the correct access rights</span><br><span class="line">$ and the repository exists.</span><br><span class="line">$ FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span></span><br></pre></td></tr></table></figure>
+<p>出现这个情况很大概率是网络问题，就比如你后台挂了魔法忘记关了，可以尝试取消相关的网络限制，一般关上就解决了.</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这是我碰见过的一些问题以及解决方法，可以尝试一下.</p>
 </div>
         </div>
         
@@ -389,8 +393,8 @@
             const twitterBase   = "https://twitter.com/intent/tweet?";
             const hostUrl       = "https://www.schoar.cloud/2025/06/04/25-5-28/";
             const title         = "「Git | 分享一下常见的错误」";
-            const excerpt       = `在我们日常使用Git中总是会出现一些比较常见的错误，本文章就列举一下我见过的一些错误以及有解决方法我会在下面写出来
-Force Push 强制推送Git版本控制系统中的一个重要操作——强制推送（Force Push）。通常情况下，我们...`;
+            const excerpt       = `这篇笔记的目的是用来记录自己使用Git的过程中遇到的问题.在我们日常使用Git中总是会出现一些比较常见的错误，本文章就列举一下我见过的一些错误以及有解决方法我会在下面写出来
+Force Push 强制推送Git版本控制系统中的一个重要...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -412,7 +416,7 @@ Force Push 强制推送Git版本控制系统中的一个重要操作——强制
                     <a class="tag-none-link" href="/tags/Git/" rel="tag">Git</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2025-06-04T02:42:48.413Z" itemprop="dateModified">最后编辑时间：2025-06-04</time>
+                    <time datetime="2025-06-04T03:02:04.029Z" itemprop="dateModified">最后编辑时间：2025-06-04</time>
                 </div>
             </div>
         </footer>
